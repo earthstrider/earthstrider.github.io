@@ -1,4 +1,44 @@
-155. Min Stack
+### 20. Valid Parentheses
+
+思路：用栈来处理这类括号匹配问题。若遇到左括号直接进栈；遇到右括号，如果其与栈顶元素匹配，则栈顶元素出栈，若不匹配，则右括号入栈。最后栈为空则返回true，否则返回false。
+
+
+
+这里可以有个小的优化，就是如果遇到右括号，且不能和栈顶元素匹配，则可以直接返回false，程序结束。代码入下：
+
+```c
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char> pipe;
+        
+        for(char c : s){
+
+            if(pipe.empty()){
+                pipe.push(c);
+                continue;
+            }
+            
+            char x = pipe.top();
+            if(x=='(' && c==')' || x=='{' && c=='}' || x=='[' && c==']')  // 右括号和栈顶元素匹配
+                pipe.pop();
+            else if(c==')' || c=='}' || c==']'){  // 右括号和栈顶元素匹配不匹配
+                return false;
+            }
+            else  // 遇到左括号
+                pipe.push(c);
+        }
+        
+        return pipe.empty();
+    }
+};
+```
+
+
+
+
+
+### 155. Min Stack
 
 拿到题目其实有点懵逼，参考别人的代码才有点思路。
 

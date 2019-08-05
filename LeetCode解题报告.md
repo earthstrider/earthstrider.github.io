@@ -135,6 +135,10 @@ public:
 
 拿到题目其实有点懵逼，参考别人的代码才有点思路。
 
+
+
+**常规解法**
+
 此题关键点就是如果用 o(1) 的时间求最小值，思路是使用两个栈，第二个栈保证非严格递减，这样第二个栈的top元素就是当前栈的最小值，这里需要稍微思考一下原因。
 
 
@@ -234,4 +238,49 @@ private:
     stack<int> helper_stack;
 };
 
+```
+
+
+
+**天才解法**
+
+```python
+class MinStack:
+
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.stack = []
+        self.minEle = None
+
+        
+    def push(self, x: int) -> None:
+        if not self.stack:
+            self.stack.append(x)
+            self.minEle = x
+            
+        elif x < self.minEle:
+            self.stack.append(2 * x           -  self.minEle)
+            self.minEle = x
+        else:
+            self.stack.append(x)
+            
+
+    def pop(self) -> None:
+        lastEle = self.stack.pop();
+        if lastEle < self.minEle:
+            self.minEle =     2 * self.minEle - lastEle
+
+
+    def top(self) -> int:
+        lastEle = self.stack[-1]
+        if lastEle < self.minEle:
+            return self.minEle
+        else:
+            return lastEle
+
+        
+    def getMin(self) -> int:
+        return self.minEle
 ```

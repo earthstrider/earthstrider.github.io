@@ -1,3 +1,90 @@
+### 23. Merge k Sorted Lists
+
+首先如何合并两个有序链表？每次比较两个链表的第一个节点，将较小的节点记录下来。
+
+```c
+ListNode* mergeTwoLists(ListNode* A, ListNode* B){
+  ListNode head(-1);
+  head.next = NULL;
+  ListNode* C = &head;
+
+  while(A && B){
+    // 8-18行代码简写成17-20代码
+    // if(A->val <= B->val){
+    //     C->next = A;
+    //     A = A->next;
+    // }
+    // else{
+    //     C->next = B;
+    //     B = B->next;
+    // }
+
+    if(A->val > B->val) swap(A, B);
+    C->next = A;
+    A = A->next;
+    C = C->next;
+  }
+	
+  //23、24行代码简写26行
+  // if(A) { C->next = A; }
+  // if(B) { C->next = B; }
+
+  C->next = A ? A : B;
+
+  return head.next;
+}
+```
+
+这个代码非常简洁，注释中提到的两处简写非常漂亮，当然定义了一个头节点，方便处理。最后代码仅仅10行。
+
+
+
+下面使用归并的方式合并多个链表。
+
+```c
+ListNode* mergeKLists(vector<ListNode*>& lists){
+  return merge(lists, 0, lists.size()-1);
+}
+
+ListNode* merge(vector<ListNode*>& lists, int l, int r){
+  if(l > r) return NULL;
+  if(l == r) return lists[l];
+  if(l+1 == r) return mergeTwoLists(lists[l], lists[r]);
+
+  int mid = (l + r) / 2;
+
+  ListNode* A = merge(lists, l, mid);
+  ListNode* B = merge(lists, mid+1, r);
+
+  return mergeTwoLists(A, B);
+}
+```
+
+非归并方式合并多个链表，而总是向一个链表A上合并。
+
+```c
+ListNode* mergeKLists_2(vector<ListNode*>& lists) {
+  if(lists.size() == 0)
+  return NULL;
+
+  ListNode* A = lists[0];
+  ListNode* B;
+
+  for(int i = 1; i < lists.size(); ++i){
+  B = lists[i];
+  A = mergeTwoLists(A, B);
+  }
+
+  return A;
+}
+```
+
+
+
+使用归并的方式比没有使用归并的方式块很多，前者的时间复杂度是o(nlgk)，而后者是o(nk)。
+
+
+
 ### 215. Kth Largest Element in an Array
 
 方法一：擂台法
@@ -31,7 +118,7 @@ int findKthLargest(vector<int>& nums, int k) {
 ```c
 int findKthLargest_prio_queue(vector<int>& nums, int k) {
     priority_queue<int, vector<int>, greater<int>> pq;
-    
+
     for(int num: nums){
         pq.push(num);
         
@@ -128,6 +215,8 @@ public:
 
 
 问题：给出的匹配符号只有三对，如果有很多对如何处理？
+
+
 
 
 

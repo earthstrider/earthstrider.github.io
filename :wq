@@ -57,9 +57,9 @@ kramdown:
 
 
 # 评论系统
-disqus_enable: true
+# Disqus（https://disqus.com/）
+# disqus:
 disqus_username: earthstrider
-
 
 # Gitalk
 gitalk:

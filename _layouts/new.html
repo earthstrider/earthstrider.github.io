@@ -1,0 +1,74 @@
+---
+layout: default
+---
+
+<!-- Page Header -->
+<header class="intro-header"
+        style="background-image: url('{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading">{{ page.description }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+
+        <!-- NO SIDEBAR -->
+        <!-- PostList Container -->
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 postlist-container">
+            {{ content }}
+        </div>
+
+        <!-- Gitalk 评论 start  -->
+        <div class="col-lg-8 col-lg-offset-2">
+            {% if site.gitalk.enable %}
+            <!-- Gitalk link  -->
+            <link rel="stylesheet" href="/css/gitalk.css">
+            <script src="/js/gitalk.min.js"></script>
+
+            <div id="gitalk-container"></div>
+            <script type="text/javascript">
+                var gitalk = new Gitalk({
+                    clientID: '{{site.gitalk.clientID}}',
+                    clientSecret: '{{site.gitalk.clientSecret}}',
+                    repo: '{{site.gitalk.repo}}',
+                    owner: '{{site.gitalk.owner}}',
+                    admin: ['{{site.gitalk.admin}}'],
+                    distractionFreeMode: '{{site.gitalk.distractionFreeMode}}',
+                    id: 'laboratory',
+                });
+                gitalk.render('gitalk-container');
+            </script>
+            {% endif %}
+        </div>
+        <!-- Gitalk end -->
+
+        <!-- Sidebar Container -->
+        <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+            <!-- Friends Blog -->
+            {% if site.friends %}
+            <hr>
+            <h5>FRIENDS</h5>
+            <ul class="list-inline">
+                {% for friend in site.friends %}
+                <li><a href="{{friend.href}}">{{friend.title}}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+
+    </div>
+</div>

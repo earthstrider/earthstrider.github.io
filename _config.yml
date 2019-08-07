@@ -58,7 +58,7 @@ kramdown:
 
 # 评论系统
 disqus_enable: true
-disqus_username: earthstrider
+disqus_username: earthstrider-github-io
 
 
 # Gitalk

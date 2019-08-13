@@ -1,5 +1,4 @@
 ---
-title: "x -> ∞"
 layout: default
 description: ""
 header-img: "img/tag-bg.jpg"
@@ -10,16 +9,11 @@ header-img: "img/tag-bg.jpg"
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
-                    <span class="subheading">{{ page.description }}</span>
+                <h1 style="text-align: center"><a href="/index.html" style="color: steelblue"><img src="/img/x.png"></a></h1>
+                    <!--<span class="subheading">{{ page.description }}</span>-->
 
-					<!--<li style="margin-right:20px; list-style: none; height: 50px">-->
-						<!--<input style="margin:10px 0px" id="search-input" name="word" type="text"  aria-haspopup="true" aria-expanded="false" class="form-control typeahead"  placeholder="搜索">-->
-
-						<!--<ul id="results-container">-->
-
-						<!--</ul>-->
-					<!--</li>-->
+                <hr style="border: #727272 dashed 1px">
+                <div style="text-align: center">欢迎访问！</div>
             </div>
         </div>
     </div>
@@ -56,7 +50,8 @@ header-img: "img/tag-bg.jpg"
 				 <div class="post-preview">
 				    <a href="{{ post.url | prepend: site.baseurl }}">
 				        <h2 class="post-title">
-                            {{ post.title }} {{ post.date | date: "%b - %-d - %Y" }}
+							<span >{{ post.title }} </span>
+							<span style="position: absolute; right: 0px; ">{{ post.date | date: "%Y-%m-%d" }}</span>
 				        </h2>
 				        {% if post.subtitle %}
 				        <h3 class="post-subtitle">

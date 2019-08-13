@@ -2,23 +2,26 @@
 layout: default
 ---
 
-<!-- Page Header -->
-<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>{% if page.page-title %}{{ page.page-title }}{% else %}{{ site.title }}{% endif %}</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">{{ page.description }}</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+
 
 <!-- Main Content -->
 <div class="container">
+
+    <!--&lt;!&ndash; Page Header &ndash;&gt;-->
+    <!--<header class="" style="margin-top: 60px">-->
+        <!--<div class="container">-->
+            <!--<div class="row">-->
+                <!--<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">-->
+                    <!--<div class="site-heading">-->
+                        <!--<h1>{% if page.page-title %}{{ page.page-title }}{% else %}{{ site.title }}{% endif %}</h1>-->
+                        <!--&lt;!&ndash;<hr class="small">&ndash;&gt;-->
+                        <!--<span class="subheading">{{ page.description }}</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</header>-->
+
 	<div class="row">
         {% if site.sidebar == false %}
 <!-- NO SIDEBAR -->
@@ -183,7 +186,7 @@ layout: default
                                 </a>
                             </li>
                             {% endif %}
-                            
+
                         </ul>
                         {% if site.email %}
                             <p>✉️ {{site.email}}</p>
@@ -200,12 +203,13 @@ layout: default
                     {% endfor %}
                 </ul>
                 {% endif %}
-				
+
 				<!--
 				<hr>
 				<h5>VISITING</h5>
-				<script type="text/javascript" id="clstr_globe" src="//cdn.clustrmaps.com/globe.js?w=175&d=lTPe3zNvJpcmVQz9q6T7NaF0uV_OjEfvDmGrKceIzVs"> -->
+				<script type="text/javascript" id="clstr_globe" src="//cdn.clustrmaps.com/globe.js?w=175&d=lTPe3zNvJpcmVQz9q6T7NaF0uV_OjEfvDmGrKceIzVs">
 				</script>
+				-->
 
     		</div>
         {% endif %}

@@ -4,13 +4,13 @@ SEOTitle: 红树林
 header-img: img/earth-2.jpg
 email: 1756563255@qq.com
 description: "浪漫主义者丛林"
-keyword: "红树林, Mangrove, YanYong, 严勇, 博客, Python，机器学习"
+keyword: "红树林, mangrove, 博客, earthstrider"
 url: https://earthstrider.github.io          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/earthstrider/earthstrider.github.io.git" # you code repository
 
 # Sidebar settings
-sidebar: True                           # whether or not using Sidebar.
+sidebar: False                           # whether or not using Sidebar.
 sidebar-about-description: "earthstrider"
 sidebar-avatar: /img/me.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
@@ -94,7 +94,7 @@ simple_jekyll_search:
 
 
 # Featured Tags
-featured-tags: true                     # 是否使用首页标签
+featured-tags: false                     # 是否使用首页标签
 featured-condition-size: 1              # 相同标签数量大于这个数，才会出现在首页
 
 
@@ -106,11 +106,11 @@ service-worker: false
 
 
 #World's top universities
-friends: [
-    {
-        title: "Datawhale"
-
-    }
+#friends: [
+#    {
+#        title: "Datawhale"
+#
+#    }
     #  {
     #      title: "HKUST",
     #      href: "https://www.ust.hk/",
@@ -121,7 +121,7 @@ friends: [
     #      title: "Stanford",
     #      href: "https://www.stanford.edu/",
     #  }
-]
+#]
 
 # theme: jekyll-theme-modernist
 

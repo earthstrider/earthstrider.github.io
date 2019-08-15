@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      论文阅读报告
+title:      Denoising Distantly Supervised Open-Domain Question Answering
 subtitle:   
 date:       2019-08-10
 author:     猫不见了
@@ -13,7 +13,9 @@ tags:
 
 
 
-Denoising Distantly Supervised Open-Domain Question Answering
+[Denoising Distantly Supervised Open-Domain Question Answering](https://pdfs.semanticscholar.org/f4e7/03d2845c540ef0ff6c99cdd53017dfbfe595.pdf)
+
+Yankai Lin, Haozhe Ji, Zhiyuan Liu, Maosong Sun
 
 
 

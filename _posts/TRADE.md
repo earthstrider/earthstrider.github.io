@@ -11,19 +11,138 @@ tags:
     - Paper
 ---
 
-[Transferable Multi-Domain State Generator for Task-Oriented Dialogue Systems](https://www.aclweb.org/anthology/P19-1078)
+Paper: [Transferable Multi-Domain State Generator for Task-Oriented Dialogue Systems](https://www.aclweb.org/anthology/P19-1078)
 
-Chien-Sheng Wu, Andrea Madotto, Ehsan Hosseini-Asl, Caiming Xiong, Richard Socher and Pascale Fung
+Code: [github.com/jasonwu0731/trade-dst](https://github.com/jasonwu0731/trade-dst)
 
-
-
-摘要
-
-
-
-XXX和XXX是dialogue state tracking中的两大主要问题。
+Author: Chien-Sheng Wu, Andrea Madotto, Ehsan Hosseini-Asl, Caiming Xiong, Richard Socher and Pascale Fung
 
 
 
 
 
+#### 摘要
+
+Over-dependence on domain ontology和lack of knowledge sharing across domains是dialogue state tracking中的两大主要的问题。
+
+已存在的方法通常在tracking unknown slot values during inference方面不足，并且难以适应新的领域。
+
+我们提出TRAnsferable Dialogue statE generator（TRADE），其使用copy mechanism，从话语中生成对话状态，在预测训练期间未遇到的三元组时促使知识迁移。我们的模型由话语编码器、slot gate以及状态生成器组成，They are shared across domains。
+
+实验结果证明，TRADE在MultiWOZ的五个领域上实现48.62%的最先进的joint goal accuracy。此外，我们通过在未知领域模拟zero-shot and few-shot dialogue state tracking以显示其迁移能力。TRADE在其中一个few-shot domains中实现了60.58％的joint goal accuracy，并且能够适应few-shot cases 而不会忘记已经训练过的领域知识。
+
+
+
+#### 引言
+
+对话状态跟踪是面向任务的对话系统的核心部分，其目标是提取对话者在对话中所传达的意图，并将他们编码为紧凑的对话状态。用（slot，value）表示。问题：slot在这里表示什么？
+
+<img src="/Users/yanyong/Library/Application Support/typora-user-images/image-20190817151104179.png" width="60%"/>
+
+<center>图1：多领域对话状态跟踪示例</center>
+#### TRADE模型
+
+数学符号定义如下：
+
+$$X=\{(U_1, R_1),...,(U_T, R_T),\}$$为用户与系统的每轮对话的集合，共包含T轮对话；
+
+$$B=\{B_1,...,B_T\}$$为每轮对话的对话状态；
+
+$$B_t=(domain: D_n, slot: S_m,value:Y_j^{value})$$，tuple类型；
+
+$$D = \{D_1,...,D_N\}$$是$$N$$种不同领域的话题；
+
+$$S=\{S_1,...,S_M\}$$是$$M$$中不同的slots。
+
+
+
+![image-20190817151952816](http://ww1.sinaimg.cn/large/006tNc79ly1g62p9m01hxj31050jwtd3.jpg)
+
+Utterance Encoder
+
+State Generator
+
+使用复制机制生成槽值。复制机制是干什么的？为什么需要呢？这里对应图1中右侧虚线的箭头，其用来复制之前对话领域中提到的槽位槽值对（slot,value）到当前对话领域中，利用这些信息进一步生成当前对话领域各个槽位对应的槽值。本文采用的复制机制是`soft-gated pointer-generator copying`，将词分布和对话历史分布连接成单个输出分布。
+
+使用GRU作为状态生成器的解码器，预测每个（domain, slot）对的值。GRU是什么呢？GRU是递归神经网络的一种，使用GRU来处理slot filling问题。
+
+
+
+
+
+<img src="http://ww2.sinaimg.cn/large/006tNc79ly1g63u0pqba4j30sx0isjuh.jpg" width="80%" />
+
+<center>RNN网络结构，同一个输入在不同语境下可以有不同的输出。</center>
+<img src="http://ww2.sinaimg.cn/large/006tNc79ly1g63wlb1o20j30se0hkgsq.jpg" width="80%" />
+
+<center>双向RNN</center>
+ LSTM的memory由三个门控制，分别是input gate、output gate以及forget gate。
+
+<img src="http://ww4.sinaimg.cn/large/006tNc79ly1g63ybuaa0wj30t70jndua.jpg" width="80%" />
+
+<img src="http://ww1.sinaimg.cn/large/006tNc79ly1g63yucvg0rj30rf0ky121.jpg" width="80%" />
+
+上图黑色圆点是线性算子。
+
+
+
+
+
+Slot Gate
+
+slot gate是一个三类分类器，将来自编码器隐藏状态的上下文矩阵$$H_t$$映射到一个概率分布（ptr，none，dontcare），如果slot gate预测某个（domain，slot）对的值是none或dontcare，将分别用“note-mentioned”或”does not cate“替代state generator生成的值，否则保留。
+
+
+
+
+Optimization
+
+
+
+
+
+#### Unseen Domain DST
+
+
+
+#### Experiments
+
+
+
+
+
+输入 输出
+
+算法编排
+
+监督学习
+
+sparQL
+
+
+
+实体类下的记录匹配
+
+怎么和现有系统结合
+
+
+
+vault
+
+数据仓库
+
+图数据的优势
+
+keettle
+
+数据治理
+
+银行用户匹配  属性权重 一票否决
+
+语言、框架
+
+数据输入和输出
+
+扩展性
+
+dataiku 编排

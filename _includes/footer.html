@@ -240,11 +240,11 @@
 <script type="text/javascript">
   (function(){
     // Initial mermaid
-    mermaid.init({startOnLoad:true}, "pre code.language-mermaid", function(){
-      // Change <pre> and <code> block style
-      var codeBlock = document.querySelector('code.language-mermaid');
-      var preBlock = codeBlock.parentNode;
+    mermaid.init({startOnLoad:true}, ".language-mermaid", function(){
 
+      // Change <pre> and <code> block stydle
+      var codeBlock = document.querySelector('.language-mermaid');
+	  var preBlock = codeBlock.parentNode;
       codeBlock.style.backgroundColor = 'initial';
       preBlock.style.border = 'none';
       preBlock.style.textAlign = 'center';

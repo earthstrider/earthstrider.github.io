@@ -32,6 +32,8 @@ RecordLink
 
 StaticRecordLink
 
+StaticRecordLink没有继承ActiveMatching类，其将主动学习模型保存在文件中，包括data_model、classifier、predicates、training_pairs，使用主动学习模型时直接读取。
+
 
 
 
@@ -57,7 +59,11 @@ GazetteerMatching
 
 
 
-S排列，minHash算法计算的$$h_{min}(S)$$不一样吗？
+S的不同排列，minHash算法计算的$$h_{min}(S)$$不一样吗？
+
+
+
+predicate是什么？可以理解为用于分块的特征。
 
 
 
@@ -66,6 +72,28 @@ TF-IDF
 TF（词频）：词A在某文档中出现的次数，再归一化；
 
 IDF（反文档词频）：总文档个数/包含词A的文档个数，包含词A的文档个数越多，IDF越大，说明词A具有很好的分类能力。
+
+
+
+
+
+data_model
+
+classifier
+
+predicates
+
+training_pairs
+
+
+
+评估方法：
+
+- 准确率$P=\frac{TP}{TP+FP}$：
+
+- 召回率$Re=\frac{TP}{TP+FN}$：
+
+- $F1=\frac{1}{\frac{1}{2}(\frac{1}{P}+\frac{1}{Re})}$，即$P$与$Re$的调和平均。
 
 
 
